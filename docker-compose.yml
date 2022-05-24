@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  apache-modsec:
+    container_name: apache2modsec
+    image: rubenvp/apache-modsec:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./conf/modsecurity.conf:/etc/modsecurity/modsecurity.conf
+      - ./conf/security2.conf:/etc/apache2/mods-enabled/security2.conf
+      - ./sql/setup_db.sql:/usr/script-sql/setup_db.sql
+    networks:
+      - tp
+  # Service 2 kali linux
+  kali:
+    container_name: kali
+    image: kasmweb/core-kali-rolling:develop
+    user: root
+    ports:
+      - 6901:6901
+      - 4902:4902
+    networks:
+      - tp
+    environment:
+      - VNC_PW=password
+    volumes:
+      - ./kali/:/home/kali/
+  # Service 3 Mariadb
+  mariadb:
+    image: 'mariadb:10.7'
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=S3cret
+      - MYSQL_PASSWORD=An0thrS3crt
+      - MYSQL_USER=citizix_user
+      - MYSQL_DATABASE=citizix_db
+    networks:
+      - tp
+    volumes:
+      - ./sql/setup_db.sql:/tmp/setup_db.sql
+      - ./mysql-dump:/var/lib/mysql
+
+networks:
+  tp:
