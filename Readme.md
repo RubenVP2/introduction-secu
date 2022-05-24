@@ -23,6 +23,12 @@ docker inspect apache | grep IPAddress
 
 Mettre l'ip sur un navigateur web de kali linux pour voir si les containeurs communiquent bien.
 
+!!!!!
+```
+Il faut aussi récupérer l'ip du container mariadb, et mettre celle-ci dans la ligne 4 des fichiers `db_requester` du dossier `html`.
+```
+!!!!!
+
 ## Mysql
 
 Executer la commande suivante : 
