@@ -1,7 +1,7 @@
 <?php
 
 	function request($sql) {
-		$conn =new PDO('mysql:host=127.0.0.1;dbname=sqli_db', 'sqli_user', '609cd9eecebfb63ba1c2'); 
+		$conn =new PDO('mysql:host=172.25.0.4;dbname=sqli_db', 'root', 'S3cret'); 
 		$result = $conn->query($sql);
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 	}

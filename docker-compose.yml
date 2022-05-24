@@ -30,6 +30,7 @@ services:
   # Service 3 Mariadb
   mariadb:
     image: 'mariadb:10.7'
+    container_name: mariadb
     restart: always
     ports:
       - '3306:3306'

@@ -32,6 +32,7 @@
 			$login = $_POST['login'];
 			$password = $_POST['password'];
 			$result = checkCredentials($login, $password);
+			print($result);
 			if ($result) {
 				createSession($result);
 				redirect();

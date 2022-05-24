@@ -45,3 +45,5 @@ Mot de passe : `S3cret`
 Un dossier htlm est créé et pointera vers le dossier `/var/www/html` de apache2.
 
 Le volume kali sert à transférer les fichiers de Kali Linux sur le répertoire /home de l'user.
+
+Le volume sur le dossier ./conf est utilisé pour les fichiers de configuration mod-security.
